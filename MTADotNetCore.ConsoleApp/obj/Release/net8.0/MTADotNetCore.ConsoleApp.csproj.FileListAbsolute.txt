@@ -1,5 +1,0 @@
-D:\MTDA\LearnIT\DotNet\MTADotNetCore\MTADotNetCore.ConsoleApp\obj\Release\net8.0\MTADotNetCore.ConsoleApp.csproj.AssemblyReference.cache
-D:\MTDA\LearnIT\DotNet\MTADotNetCore\MTADotNetCore.ConsoleApp\obj\Release\net8.0\MTADotNetCore.ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
-D:\MTDA\LearnIT\DotNet\MTADotNetCore\MTADotNetCore.ConsoleApp\obj\Release\net8.0\MTADotNetCore.ConsoleApp.AssemblyInfoInputs.cache
-D:\MTDA\LearnIT\DotNet\MTADotNetCore\MTADotNetCore.ConsoleApp\obj\Release\net8.0\MTADotNetCore.ConsoleApp.AssemblyInfo.cs
-D:\MTDA\LearnIT\DotNet\MTADotNetCore\MTADotNetCore.ConsoleApp\obj\Release\net8.0\MTADotNetCore.ConsoleApp.csproj.CoreCompileInputs.cache
