@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\MTADotNetCore.RestApi.props" />
+</Project>
