@@ -11,7 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{
 		..\DotNetTrainingB4.sql = ..\DotNetTrainingB4.sql
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTADotNetCore.RestApi", "MTADotNetCore.RestApi\MTADotNetCore.RestApi.csproj", "{770128CE-0448-4C41-9101-1C27B27B8DE0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTADotNetCore.RestApi", "MTADotNetCore.RestApi\MTADotNetCore.RestApi.csproj", "{B2CE66D9-CF2F-4F81-B7DC-583849E3386A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTADotNetCore.Shared", "MTADotNetCore.Shared\MTADotNetCore.Shared.csproj", "{B0C17FB5-ACF8-484A-97E9-339CB1A188FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTADotNetCore.ConsoleAppHttpClient", "MTADotNetCore.ConsoleAppHttpClient\MTADotNetCore.ConsoleAppHttpClient.csproj", "{8F777BAF-1FE5-440C-A015-685E33805F5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTADotNetCore.RestApiWithNLayer", "MTADotNetCore.RestApiWithNLayer\MTADotNetCore.RestApiWithNLayer.csproj", "{FB7652E1-4348-4DD9-B129-62D16FE07E21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +29,22 @@ Global
 		{F3533B56-ACE6-48E1-8845-997E92566A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3533B56-ACE6-48E1-8845-997E92566A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3533B56-ACE6-48E1-8845-997E92566A5A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{770128CE-0448-4C41-9101-1C27B27B8DE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{770128CE-0448-4C41-9101-1C27B27B8DE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{770128CE-0448-4C41-9101-1C27B27B8DE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{770128CE-0448-4C41-9101-1C27B27B8DE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2CE66D9-CF2F-4F81-B7DC-583849E3386A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2CE66D9-CF2F-4F81-B7DC-583849E3386A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2CE66D9-CF2F-4F81-B7DC-583849E3386A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2CE66D9-CF2F-4F81-B7DC-583849E3386A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0C17FB5-ACF8-484A-97E9-339CB1A188FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0C17FB5-ACF8-484A-97E9-339CB1A188FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0C17FB5-ACF8-484A-97E9-339CB1A188FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0C17FB5-ACF8-484A-97E9-339CB1A188FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F777BAF-1FE5-440C-A015-685E33805F5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F777BAF-1FE5-440C-A015-685E33805F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F777BAF-1FE5-440C-A015-685E33805F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F777BAF-1FE5-440C-A015-685E33805F5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB7652E1-4348-4DD9-B129-62D16FE07E21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB7652E1-4348-4DD9-B129-62D16FE07E21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB7652E1-4348-4DD9-B129-62D16FE07E21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB7652E1-4348-4DD9-B129-62D16FE07E21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

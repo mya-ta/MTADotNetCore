@@ -1,109 +1,94 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MTADotNetCore.RestApi.Db;
-using MTADotNetCore.RestApi.Models;
+using MTADotNetCore.RestApi.Model;
 
-namespace MTADotNetCore.RestApi.Controllers
+namespace MTADotNetCore.RestApi.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class BlogController : ControllerBase
 {
-    //endpoint => api/blog
-    [Route("api/[controller]")]
-    [ApiController]
-    public class BlogController : ControllerBase
+    private readonly AppDbContext _context;
+
+    public BlogController()
     {
-        private readonly AppDbContext _context;
+        _context = new AppDbContext();
+    }
 
-        public BlogController()
+    [HttpGet]
+    public IActionResult Read()
+    {
+        var lst = _context.Blogs.ToList();
+        return Ok(lst);
+    }
+
+    [HttpGet("{id}")]
+    public IActionResult Edit(int id)
+    {
+        var item = _context.Blogs.FirstOrDefault(x => x.BlogId == id);
+        if (item is null) return NotFound("No data found for ID=" + id);
+        return Ok(item);
+    }
+
+    [HttpPost]
+    public IActionResult Create(BlogModel blog)
+    {
+        _context.Blogs.Add(blog);
+        var result = _context.SaveChanges();
+        string message = result > 0 ? "Saving Successful." : "Saving Failed.";
+        return Ok(message);
+    }
+
+    [HttpPut("{id}")]
+    public IActionResult Update(int id, BlogModel blog)
+    {
+        var item = _context.Blogs.FirstOrDefault(x => x.BlogId == id);
+        if (item is null) return NotFound("No data found for ID=" + id);
+
+        item.BlogTitle = blog.BlogTitle;
+        item.BlogAuthor = blog.BlogAuthor;
+        item.BlogContent = blog.BlogContent;
+        var result = _context.SaveChanges();
+
+        string message = result > 0 ? "Updating Successful for ID=" + id : "Updating Failed for ID=" + id;
+        return Ok(message);
+    }
+
+    [HttpPatch("{id}")]
+    public IActionResult Patch(int id, BlogModel blog)
+    {
+        var item = _context.Blogs.FirstOrDefault(x => x.BlogId == id);
+        if (item is null) return NotFound("No data found for ID=" + id);
+
+        if (!string.IsNullOrEmpty(blog.BlogTitle))
         {
-            _context = new AppDbContext();
-        }
-
-        [HttpGet]
-        public IActionResult Read()
-        {
-            var lst = _context.Blogs.ToList();
-            return Ok(lst);
-        }
-
-        [HttpGet("{id}")]
-        public IActionResult Edit(int id)
-        {
-            var item = _context.Blogs.FirstOrDefault(x => x.BlogId == id);
-            if (item is null)
-            {
-                return NotFound("No data found for ID = " + id);
-            }
-            return Ok(item);
-        }
-
-        [HttpPost]
-        public IActionResult Create(BlogModel blog)
-        {
-            _context.Blogs.Add(blog);
-            var result = _context.SaveChanges();
-
-            string message = result > 0 ? "Saving Success." : "Saving Failed.";
-            return Ok(message);
-        }
-
-        [HttpPut("{id}")] //update whole object
-        public IActionResult Update(int id, BlogModel blog)
-        {
-            var item = _context.Blogs.FirstOrDefault(x => x.BlogId == id);
-            if (item is null)
-            {
-                return NotFound("No data found for ID = " + id);
-            }
             item.BlogTitle = blog.BlogTitle;
+        }
+        if (!string.IsNullOrEmpty(blog.BlogAuthor))
+        {
             item.BlogAuthor = blog.BlogAuthor;
+        }
+        if (!string.IsNullOrEmpty(blog.BlogContent))
+        {
             item.BlogContent = blog.BlogContent;
-
-            int result = _context.SaveChanges();
-            string message = result > 0 ? "Updating Success for ID = " + id : "Updating Failed for ID = " + id;
-
-            return Ok(message);
         }
+        var result = _context.SaveChanges();
 
-        [HttpPatch("{id}")] //update 1 by 1
-        public IActionResult Patch(int id, BlogModel blog)
-        {
-            var item = _context.Blogs.FirstOrDefault(x => x.BlogId == id);
-            if (item is null)
-            {
-                return NotFound("No data found for ID = " + id);
-            }
+        string message = result > 0 ? "Updating Successful for ID=" + id : "Updating Failed for ID=" + id;
+        return Ok(message);
+    }
 
-            if (!string.IsNullOrEmpty(blog.BlogTitle))
-            {
-                item.BlogTitle = blog.BlogTitle;
-            }
-            if (!string.IsNullOrEmpty(blog.BlogAuthor))
-            {
-                item.BlogAuthor = blog.BlogAuthor;
-            }
-            if (!string.IsNullOrEmpty(blog.BlogContent))
-            {
-                item.BlogContent = blog.BlogContent;
-            }
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id)
+    {
+        var item = _context.Blogs.FirstOrDefault(x => x.BlogId == id);
+        if (item is null) return NotFound("No data found for ID=" + id);
 
-            int result = _context.SaveChanges();
-            string message = result > 0 ? "Updating Success for ID = " + id : "Updating Failed for ID = " + id;
-            return Ok(message);
-        }
+        _context.Blogs.Remove(item);
+        var result = _context.SaveChanges();
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
-        {
-            var item = _context.Blogs.FirstOrDefault(x => x.BlogId == id);
-            if (item is null)
-            {
-                return NotFound("No data found for ID = " + id);
-            }
-
-            _context.Blogs.Remove(item);
-            int result = _context.SaveChanges();
-
-            string message = result > 0 ? "Deleting Success for ID = " + id : "Deleting Failed for ID = " + id;
-            return Ok(message);
-        }
+        string message = result > 0 ? "Deleting Successful for ID=" + id : "Deleting Failed for ID=" + id;
+        return Ok(message);
     }
 }

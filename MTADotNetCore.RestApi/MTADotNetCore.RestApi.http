@@ -1,0 +1,36 @@
+@MTADotNetCore.RestApi_HostAddress = http://localhost:5011
+
+GET {{MTADotNetCore.RestApi_HostAddress}}/api/blog/1
+###
+
+POST {{MTADotNetCore.RestApi_HostAddress}}/api/blog/
+Content-Type: application/json
+
+{
+    "blogTitle":"title",
+    "blogAuthor":"mya",
+    "blogContent":"content"
+}
+###
+
+PUT {{MTADotNetCore.RestApi_HostAddress}}/api/blog/3003
+Content-Type: application/json
+
+{
+    "blogTitle":"title22",
+    "blogAuthor":"mya11",
+    "blogContent":"content11"
+}
+###
+
+DELETE {{MTADotNetCore.RestApi_HostAddress}}/api/blog/7
+###
+
+PATCH  {{MTADotNetCore.RestApi_HostAddress}}/api/blog/3003
+Content-Type: application/json
+
+{
+    "blogAuthor":"mya99",
+    "blogContent":"content55"
+}
+###

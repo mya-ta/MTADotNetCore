@@ -2,7 +2,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Net;
 using Microsoft.EntityFrameworkCore;
-using MTADotNetCore.RestApi.Models;
+using MTADotNetCore.RestApi.Model;
 
 namespace MTADotNetCore.RestApi.Db;
 

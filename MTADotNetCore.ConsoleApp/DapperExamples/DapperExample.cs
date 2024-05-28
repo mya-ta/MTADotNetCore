@@ -45,7 +45,6 @@ public class DapperExample
         Console.WriteLine(item.BlogTitle);
         Console.WriteLine(item.BlogAuthor);
         Console.WriteLine(item.BlogContent);
-
     }
     private void Create(string title, string author, string content)
     {
@@ -69,7 +68,6 @@ public class DapperExample
 
         string message = result > 0 ? "Saving Success." : "Saving Failed.";
         Console.WriteLine(message);
-
     }
     private void Update(int id, string title, string author, string content)
     {
