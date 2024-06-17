@@ -1,7 +1,5 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.Globalization;
-using Newtonsoft.Json.Converters;
 
 namespace MTADotNetCore.RestApiWithNLayer.Features.LatHtaukBayDin;
 
@@ -21,77 +19,48 @@ public class LatHtaukBayDinController : ControllerBase
     public async Task<IActionResult> Questions()
     {
         var model = await GetDataAsync();
-        return Ok(model.Questions);
+        return Ok(model.questions);
     }
 
     [HttpGet("numberList")]
     public async Task<IActionResult> NumberList()
     {
         var model = await GetDataAsync();
-        return Ok(model.NumberList);
+        return Ok(model.numberList);
     }
 
-    [HttpGet("{questionNo}/no}")]
+    [HttpGet("{questionNo}/{no}")]
     public async Task<IActionResult> Answer(int questionNo, int no)
     {
         var model = await GetDataAsync();
-        return Ok(model.Answers.FirstOrDefault(x => x.QuestionNo == questionNo
-        && x.AnswerNo == no));
+        return Ok(model.answers.FirstOrDefault(x => x.questionNo == questionNo
+        && x.answerNo == no));
     }
 }
 
-public partial class LatHtaukBayDin
+//static string ToNumber(string num)
+//{
+//    num = num.Replace("၀", "0");
+//    num = num.Replace("၁", "1");
+//    return num;
+//test}
+
+public class LatHtaukBayDin
 {
-    [JsonProperty("questions")]
-    public Question[] Questions { get; set; }
-
-    [JsonProperty("answers")]
-    public Answer[] Answers { get; set; }
-
-    [JsonProperty("numberList")]
-    public string[] NumberList { get; set; }
+    public Question[] questions { get; set; }
+    public Answer[] answers { get; set; }
+    public string[] numberList { get; set; }
 }
 
-public partial class Answer
+public class Question
 {
-    [JsonProperty("questionNo")]
-    public long QuestionNo { get; set; }
-
-    [JsonProperty("answerNo")]
-    public long AnswerNo { get; set; }
-
-    [JsonProperty("answerResult")]
-    public string AnswerResult { get; set; }
+    public int questionNo { get; set; }
+    public string questionName { get; set; }
 }
 
-public partial class Question
+public class Answer
 {
-    [JsonProperty("questionNo")]
-    public long QuestionNo { get; set; }
-
-    [JsonProperty("questionName")]
-    public string QuestionName { get; set; }
-}
-
-public partial class LatHtaukBayDin
-{
-    public static LatHtaukBayDin FromJson(string json) => JsonConvert.DeserializeObject<LatHtaukBayDin>(json, Converter.Settings);
-}
-
-public static class Serialize
-{
-    public static string ToJson(this LatHtaukBayDin self) => JsonConvert.SerializeObject(self, Features.LatHtaukBayDin.Converter.Settings);
-}
-
-internal static class Converter
-{
-    public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
-    {
-        MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-        DateParseHandling = DateParseHandling.None,
-        Converters =
-            {
-                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
-            },
-    };
+    public int questionNo { get; set; }
+    public int answerNo { get; set; }
+    public string answerResult { get; set; }
 }
